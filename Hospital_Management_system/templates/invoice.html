@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        .header, .footer {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .details, .charges {
+            margin-bottom: 20px;
+        }
+        .charges table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .charges table, .charges th, .charges td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        .charges th {
+            background-color: #f2f2f2;
+        }
+        .total {
+            text-align: right;
+            font-weight: bold;
+        }
+        .payment-method {
+            margin-bottom: 20px;
+        }
+        .submit-button {
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+{% if invoice %}
+    <div class="container">
+        <div class="header">
+            <h2>Medical Invoice</h2>
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <div class="details">
+                <p><strong>Patient Name: {{invoice.patient}}</strong></p>
+                <p><strong>Doctor Name:{{invoice.doctor}}</strong></p>
+            </div>
+
+            <div class="charges">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Rate</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Appointment Charge</td>
+                            <td>{{invoice.appointment_charge_rate}}</td>
+                            <td>{{invoice.appointment_quantity}}</td>
+                            <td id="appointmentAmount">{{invoice.appointment_total}}</td>
+                        </tr>
+                        <tr>
+                            <td>Service Charge</td>
+                            <td>{{invoice.service_charge_rate}}</td>
+                            <td>{{invoice.service_quantity}}</td>
+                            <td id="serviceAmount">{{invoice.service_total}}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="total">Total Amount</td>
+                            <td class="total" id="totalAmount">{{invoice.total_amount}}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="footer">
+                <p>Thank you for your visit!</p>
+                <button type="button" class="btn btn-primary" onclick="javascript:window.print();" style="color:white;"><i class="si si-printer"></i> Print Invoice</button>
+            </div>
+        </form>
+    </div>
+{% else %}
+<p>No invoice found for this appointment.</p>
+{% endif %}
+</body>
+</html>

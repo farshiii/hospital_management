@@ -1,0 +1,165 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Profit on Each Appointment</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            background-color: #f2f2f2;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+<!--        .container {-->
+<!--            max-width: 1300px;-->
+<!--            height:600px;-->
+<!--            margin-left: 100px;-->
+<!--            margin-right: 100px;-->
+<!--            margin-top:50px;-->
+<!--            background-color: #fff;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--            padding: 20px;-->
+<!--        }-->
+<!--        #h1 {-->
+<!--            margin-top:50px;-->
+<!--            margin-left:100px;;-->
+<!--            color: #333;-->
+<!--        }-->
+<!--        img {-->
+<!--            padding:20px;-->
+<!--            display: block;-->
+<!--            margin-top:50px;-->
+<!--            margin-left:200px;-->
+<!--            margin-bottom:auto;-->
+<!--            max-width: 800px;-->
+<!--            border-radius: 10px;-->
+<!--            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);-->
+<!--        }-->
+<!--        .path{-->
+<!--            color:#3B7097;-->
+<!--        }-->
+<!--        .path-home{-->
+<!--            text-decoration:none;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="h1">-->
+<!--    <h1>Profit on Each Appointment</h1>-->
+<!--    <p class="path"><a href="{% url 'admin_home' %}" class="path-home">Home</a>/Appointments</p>-->
+<!--</div>-->
+<!--    <div class="container">-->
+
+<!--    </div>-->
+<!--</body>-->
+<!--</html>-->
+<!-- analytics/templates/analytics/dashboard.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Income Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background-color: #A9D09E;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+
+        }
+
+        .section h2 {
+            margin-top: 0;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .stat {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            width: calc(20% - 20px);
+            text-align: center;
+        }
+
+        .stat h2 {
+            margin-bottom: 10px;
+        }
+
+        .stat p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .charts {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        canvas {
+            max-width: 600px;
+            max-height: 400px;
+        }
+        .path{
+            color:#3B7097;
+        }
+        .path-home{
+            text-decoration:none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Profit on Each Appointment</h1>
+        <p class="path"><a href="{% url 'admin_home' %}" class="path-home">Home</a>/Profit Dashboard</p>
+        <div class="section">
+            <h2>Statistics</h2>
+            <div class="stats">
+                <div class="stat">
+                    <h3>Total Appointments</h3>
+                    <p>{{ total_appointments }}</p>
+                </div>
+                <div class="stat">
+                    <h3>Completed Appointments</h3>
+                    <p>{{ completed_appointments }}</p>
+                </div>
+                <div class="stat">
+                    <h3>Total Income</h3>
+                    <p>${{ total_income }}</p>
+                </div>
+                <div class="stat">
+                    <h3>Paid Invoices</h3>
+                    <p>{{ paid_invoices }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Profit Graph</h2>
+            <div class="charts">
+                <img src="data:image/png;base64,{{ data }}" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

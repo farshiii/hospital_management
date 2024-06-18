@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Test Registration Confirmation</title>
+    <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    text-align: center;
+    background-color: #009cde;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.section {
+    margin-top: 20px;
+}
+
+.section h2 {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-bottom: 2px solid #009cde;
+    margin: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table, td {
+    border: 1px solid #ccc;
+}
+
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+.barcode {
+    text-align: center;
+    margin-top:20px;
+    margin-right:auto;
+    margin-left:310px;;
+}
+
+.barcode svg {
+    display: block;
+    margin: 0 auto;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer p {
+    margin: 5px 0;
+    color: #333;
+}
+
+  </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Medical test registration confirmation</h1>
+        </div>
+        <div class="section">
+            <h2>Medical test registration slip</h2>
+            <table>
+                <tr>
+                    <td>Merchant Reference No</td>
+                    <td>WyCihmrZ</td>
+                </tr>
+                <tr>
+                    <td>GCC Slip No</td>
+                    <td>930112020130</td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td>{{appointment.first_name}}</td>
+                </tr>
+                <tr>
+                    <td>Last name</td>
+                    <td>{{appointment.last_name}}</td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>{{appointment.gender}}</td>
+                </tr>
+                <tr>
+                    <td>Doctor</td>
+                    <td>{{appointment.doctor}}</td>
+                </tr>
+                <tr>
+                    <td>Date of Appointment</td>
+                    <td>{{appointment.date}}</td>
+                </tr>
+                <tr>
+                    <td>Invoice Date</td>
+                    <td>{{invoice.date}}</td>
+                </tr>
+                <tr>
+                    <td>PAYMENT STATUS</td>
+                    {% if appointment.billed == True %}
+                    <td>PAID</td>
+                    {% else %}
+                    <td>NOT PAID</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <td>INVOICE</td>
+                    {% if appointment.billed == True %}
+                    <td><a href="{% url 'view_invoice' appointment.id %}">VIEW BILL</a></td>
+                    {% else %}
+                    <td>N/A</td>
+                    {% endif %}
+                </tr>
+            </table>
+        </div>
+        <div class="section">
+            <h2>Medical center information</h2>
+            <table>
+                <tr>
+                    <td>Medical center name</td>
+                    <td>Hospital Management System</td>
+                </tr>
+                <tr>
+                    <td>Medical center address</td>
+                    <td>Bangladesh, Sylhet, Chowhatta Sylhet</td>
+                </tr>
+                <tr>
+                    <td>Medical center phone number</td>
+                    <td>+08217171725</td>
+                </tr>
+                <tr>
+                    <td>Medical center e-mail</td>
+                    <td>abcdiagnosticcenter@yahoo.com</td>
+                </tr>
+                <tr>
+                    <td>Medical center website</td>
+                    <td><a href="/"><p>www.hospital-mangement.com</p></a></td>
+                </tr>
+            </table>
+        </div>
+        <div class="barcode">
+            <svg id="barcode" xmlns="http://www.w3.org/2000/svg" width="500" height="100"></svg>
+        </div>
+        <div class="footer">
+            <p>Generated date: 30/Nov/2020</p>
+            <p>Slip is valid only till 30/Dec/2020</p>
+        </div>
+    </div>
+
+    <script>
+        function generateBarcode(text) {
+            const svg = document.getElementById('barcode');
+            const bw = 2;  // bar width
+            const bh = 100;  // bar height
+            let x = 0;
+
+            for (let i = 0; i < text.length; i++) {
+                const char = text.charCodeAt(i);
+                for (let j = 0; j < 8; j++) {
+                    const bit = (char >> (7 - j)) & 1;
+                    if (bit) {
+                        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                        rect.setAttribute('x', x);
+                        rect.setAttribute('y', 0);
+                        rect.setAttribute('width', bw);
+                        rect.setAttribute('height', bh);
+                        rect.setAttribute('fill', 'black');
+                        svg.appendChild(rect);
+                    }
+                    x += bw;
+                }
+            }
+        }
+
+        generateBarcode('930112020130');
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+body{
+    background-color:#E8E9EB;
+}
+.bg-container{
+    margin:0;
+    border:0;
+    width:100vw;
+    background-size:cover;
+    text-decoration:none;
+}
+.main-card-container{
+    width:80%;
+    margin:10%;
+    margin-top:5%;
+    margin-bottom:2%;
+    height:300px;
+    background-color:white;
+    box-shadow: 0 4px 6px 6px rgba(0, 0, 0, 0.1);
+
+}
+.main-card{
+    height:250px;
+    margin:25px;
+    width:30%;
+    background-color:skyblue;
+    text-align:center;
+    font-size:28px;
+    padding-top:70px;
+    font-weight:bold;
+
+}
+.main-card-value{
+    margin:20px;
+    font-size:22px;
+}
+.table-container{
+    margin:20%;
+    margin-bottom:1%;
+    margin-left:10%;
+    margin-top:4%;
+}
+nav {
+   background-color: #007bff;
+   color: #fff;
+   padding: 10px;
+}
+nav ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+}
+
+nav ul li {
+   float: left;
+}
+
+nav ul li a {
+   display: block;
+   color: #fff;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+}
+
+nav ul li a:hover {
+   background-color: #0056b3;
+   text-decoration: none;
+   color: #fff;
+}
+

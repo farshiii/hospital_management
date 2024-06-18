@@ -1,0 +1,23 @@
+/*                      contact us page     */
+#contact-body{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+.contact-wrapper{
+    margin-left:5%;
+    background:linear-gradient(to bottom, #6AE3E5, #5CB2E3 );
+    border-radius:15% 0 0 15% / 15% 0 0 15% ;
+    width:95%;
+    height:90.3vh;
+}
+.contact-card{
+    display:block;
+    margin-left:25%;
+    background-color:gray;
+    border-radius:5px;
+    width:50%;
+    height:75vh;
+}

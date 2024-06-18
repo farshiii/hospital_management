@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Navigation</title>
+    <link rel="stylesheet" href="{% static 'staff/nav.css' %}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'admin_home' %}">Home</a></li>
+            <li><a href="{% url 'appointment_update' %}">Appointment Update</a></li>
+            <li><a href="{% url 'admin_appointment' %}">All Appointments</a></li>
+            <li><a href="{% url 'admin_department' %}">Doctors and Departments</a></li>
+            <li><a href="{% url 'admin_home' %}">Patients</a></li>
+            <li><a href="{% url 'billing' %}">Billing</a></li>
+            <li><a href="{% url 'admin_home' %}">Analytics</a></li>
+        </ul>
+    </nav>
+    <div style="padding: 20px;">
+
+    </div>
+</body>
+</html>

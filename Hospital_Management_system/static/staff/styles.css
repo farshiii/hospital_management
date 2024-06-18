@@ -1,0 +1,164 @@
+body {
+   font-family: Arial, sans-serif;
+   margin: 0;
+   padding: 0;
+   /*align-items: center;
+   justify-content: center;
+   flex-direction: column;*/
+   text-decoration: none;
+   }
+nav {
+   background-color: #007bff;
+   color: #fff;
+   padding: 10px;
+}
+nav ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+   overflow: hidden;
+}
+
+nav ul li {
+   float: left;
+}
+
+nav ul li a {
+   display: block;
+   color: #fff;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+}
+
+nav ul li a:hover {
+   background-color: #0056b3;
+}
+
+.wrapper1{
+height:30vh;
+}
+.app-box{
+        display:inline-block;
+        width:26%;
+        height:200px;
+        background-color:white;
+        margin-left:3.5%;
+        margin-right:3.5%;
+        border-radius:20px;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+        background-color:#73a5a2;
+        color:333;
+        text-decoration: none;
+        }
+
+.app-box a{
+    text-decoration: none;
+}
+
+.app-box button{
+    border-width:0px;
+    height:40px;
+    width:80px;
+    background-color:#73a5a2;
+    border-radius:10px;
+}
+#div2{
+    width:100%
+    background-color:gray;
+
+}
+
+.app-box2{
+        background-color:#ffc1cc;
+        float:left;
+        width:62%;
+        height:400px;
+        margin-top:1.5%;
+        margin-bottom:1.5%;
+        margin-left:3.5%;
+        margin-right:3.5%;
+        border-radius:20px;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+        }
+
+.app-box2 h2{
+}
+a{
+    text-decoration: none;
+}
+.card_title{
+    line-height:50px;
+    text-align:center;
+    color:white;
+    }
+.card_count{
+    font-size:30px;
+    color:white;
+}
+
+
+.app-box3{
+        background-color:#ffeeba;
+        float:right;
+        width:26%;
+        height:400px;
+        margin-bottom:1.5%;
+        margin-top:1.5%;
+        margin-left:1%;
+        margin-right:3.5%;
+        border-radius:20px;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+        }
+
+.card-wrapper{
+    margin-left:85px;
+    display:inline-block;
+    justify-content:center;
+
+}
+.clearfix::after{
+    content:"";
+    display:block;
+    clear:both;
+}
+.specialities-card{
+    text-align:center;
+    margin-top:50px;
+    margin-right:20px;
+    margin-bottom:20px;
+    width:250px;
+    height:200px;
+    border-radius:20px;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+    background-color:white;
+}
+.specialities-card-img{
+    display:block;
+    width:250px;
+    height:100px;
+    padding-top:20px;
+}
+.specialities-card-img img{
+    height:100%;
+}
+.specialities-card-text{
+    width:250px;
+    height:50px;
+}
+.table_home table{
+    margin-top:30px;
+    margin-left:45px;
+    width:90%;
+}
+.table_home td{
+    text-align:center;
+    height:50px;
+}
+.table_home tr{
+    background-color:#fff;
+}
+.table_home th{
+    text-align:center;
+    margin-left:10px;
+}

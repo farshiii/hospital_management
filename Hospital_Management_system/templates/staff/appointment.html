@@ -1,0 +1,48 @@
+{% extends 'staff/struct.html' %}
+{% load static %}
+{% block title %}All Appointment {% endblock title %}
+{% block content %}
+<style>
+body{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+tr{
+    width:100%;
+}
+td{
+    text-align:center;
+    background-color:#73a5a2;
+    width:23%;
+    height:50px;
+
+}
+.table{
+    margin-top:100px;
+}
+
+</style>
+<center>
+<h1>Appointments</h1>
+<div class="table">
+<table>
+    <tr>
+        <td><h3>NAME</h3></td>
+        <td><h3>PHONE</h3></td>
+        <td><h3>DEPARTMENT</h3></td>
+        <td><h3>DATE</h3></td>
+    </tr>
+    {% for i in appointment %}
+    <tr>
+        <td>{{i.fullname }}</td>
+        <td>{{i.phone }}</td>
+        <td>{{i.department }}</td>
+        <td>{{i.date }}</td>
+    </tr>
+    {% endfor %}
+</table>
+    </div>
+    </center>
+{% endblock %}

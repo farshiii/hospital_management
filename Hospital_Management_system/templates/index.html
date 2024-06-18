@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBn+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+<body>
+{% csrf_token %}
+<!------------------------------------------NAVBAR-->
+<div id="nav-div" class="clearfix">
+    <div class="nav-image-div">
+        <a id="img-a"><img src="{% static 'images/logo.png' %}" alt="" id="img-nav"></a>
+    </div>
+    <div class="nav-nav-div">
+        <a href="{% url 'appointment' %}" class="nav-txt">Appointment</a>
+        <a href="{% url 'specialties' %}">Doctors & Specialties</a>
+        <a href="#message_us">Contact Us</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'my-appointment' %}">My Appointments</a>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'signup' %}">Login</a>
+        {% endif %}
+    </div>
+</div>
+<!------------------------------------------NAVBAR END-->
+<!------------------------------------------WallPaper-->
+<div class="wallpaper-wrapper">
+    <div class="wallpaper-div">
+    <img src="{% static 'images/index_wallpaper.jpeg' %}">
+    </div>
+</div>
+<!------------------------------------------WallPaper END-->
+<!------------------------------------------About US -->
+<div class="clearfix" id="about_us-wrapper">
+    <div class="about_us-box1">
+        <h1>About us</h1>
+        <p>Welcome to [Hospital Name], where compassionate care meets cutting-edge technology.
+            At [Hospital Name], we are dedicated to providing the highest quality healthcare
+            services to our community. Our team of skilled healthcare professionals is committed
+            to delivering personalized treatment plans tailored to meet the unique needs of each
+            patient. With state-of-the-art facilities and a patient-centered approach, we strive
+            to ensure that every individual receives the attention and care they deserve. Whether
+            you're seeking routine medical care, specialized treatment, or emergency services,
+            you can trust [Hospital Name] to prioritize your health and well-being above all else.
+            Join us in our mission to promote wellness and healing in our community.</p>
+        <p>
+            At [Hospital Name], we believe that health is not just the absence of illness, but a state
+            of complete physical, mental, and social well-being. That's why we offer a comprehensive
+            range of medical services, from preventive care and diagnostics to advanced treatments
+            and rehabilitation. Our multidisciplinary team collaborates seamlessly to ensure continuity
+            of care throughout your healthcare journey. We are committed to fostering a supportive and
+            nurturing environment where patients feel empowered to take control of their health. With a
+            focus on innovation and continuous improvement, we are constantly evolving to meet the ever-changing
+            needs of our patients and community. Experience the difference at [Hospital Name], where your health and
+            happiness are our top priorities.
+        </p>
+    </div>
+    <div class="about_us-box2">
+        <img src="{% static 'images/hospital.jpeg' %}">
+    </div>
+
+</div>
+<!------------------------------------------About US END-->
+<!------------------------------------------Specialities-->
+<div class="specialities">
+    <div class="about_us-box1-copy">
+        <h1>Specialities</h1>
+        <p>At our hospital, we pride ourselves on offering a wide range of medical specialties to meet the diverse needs of our
+            patients. Our team of highly skilled physicians and healthcare professionals are experts in their respective
+            fields, providing cutting-edge treatments and personalized care. From cardiology and orthopedics to neurology
+            and oncology, our comprehensive services ensure that you receive the highest standard of care. With
+            state-of-the-art technology, innovative treatment options, and a compassionate approach, we are dedicated to
+            improving your health and well-being. Discover the difference our specialized care can make in your life.</p>
+
+        <a href="{% url 'specialties' %}" ><button class="btn btn-light">View Specialities</button></a>
+    </div>
+    <div class="about_us-box2-copy">
+        <img src="{% static 'images/dr_home.png' %}" >
+    </div>
+</div>
+<!------------------------------------------Specialities END-->
+
+<!------------------------------------------Message Us Section-->
+<div class="message-us" id="message_us">
+    <div class="message-us-head">
+        <h2>Message Us</h2>
+    </div>
+    <form action="{% url 'message' %}" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+<!------------------------------------------Message Us Section END-->
+
+<!------------------------------------------Footer -------------------->
+<footer class="footer">
+    <div>
+        <h3>Contact Us</h3>
+        <p>123 Hospital Way, City, State, ZIP</p>
+        <p>Phone: (123) 456-7890</p>
+        <p>Email: info@hospital.com</p>
+    </div>
+    <div>
+        <h3>Follow Us</h3>
+        <a href="#">Facebook</a> |
+        <a href="#">Twitter</a> |
+        <a href="#">Instagram</a>
+    </div>
+    <div>
+        <p>&copy; 2024 Hospital Name. All rights reserved.</p>
+    </div>
+</footer>
+<!------------------------------------------Footer END-->
+
+</body>
+</html>

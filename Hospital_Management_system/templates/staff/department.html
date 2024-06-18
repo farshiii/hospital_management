@@ -1,0 +1,77 @@
+{% extends 'staff/base.html' %}
+
+{% block content %}
+<div class="department-body">
+    <center>
+        <h1>Departments and Doctors</h1>
+    </center>
+        <!-- Department Cards -->
+    <div id="departmentCards">
+        {% for i in department %}
+            <a href="#">
+                <div class="card-wrapper">
+                    <div class="specialities-card">
+                        <div class="specialities-card-img">
+                            <img src="{{ i.image.url }}" alt="">
+                        </div>
+                        <div class="specialities-card-text">
+                            <h2>{{ i.name }}</h2>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .form-container {
+        display:block;
+        width: 30%;
+        align-items:center;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        margin-bottom:50px;
+    }
+    .form-container form{
+        margin-top:20px;
+    }
+    .button {
+        padding-bottom:50px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .button:hover {
+        background-color: #45a049;
+    }
+    #mainbutton1,#mainbutton2{
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    function toggleFormsAndCards(formId) {
+        var form = document.getElementById(formId + 'Container');
+        var departmentCards = document.getElementById("departmentCards");
+        if (form.style.display === "none") {
+            form.style.display = "block";
+            departmentCards.style.display = "none";
+        } else {
+            form.style.display = "none";
+            departmentCards.style.display = "block";
+        }
+    }
+</script>
+{% endblock %}

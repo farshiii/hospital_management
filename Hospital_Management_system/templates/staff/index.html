@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff Home</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBn+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <style>
+body{
+    background-color:#E8E9EB;
+}
+.bg-container{
+    margin:0;
+    border:0;
+    width:100vw;
+    background-size:cover;
+}
+.main-card-container{
+    width:80%;
+    margin:10%;
+    margin-top:5%;
+    margin-bottom:2%;
+    height:300px;
+    background-color:white;
+    box-shadow: 0 4px 6px 6px rgba(0, 0, 0, 0.1);
+
+}
+.main-card{
+    height:250px;
+    margin:25px;
+    width:30%;
+    background-color:skyblue;
+    text-align:center;
+    font-size:28px;
+    padding-top:70px;
+    font-weight:bold;
+
+}
+.main-card-value{
+    margin:20px;
+    font-size:22px;
+}
+.table-container{
+    margin:20%;
+    margin-left:10%;
+    margin-top:4%;
+}
+  </style>
+</head>
+<body>
+<div class="bg-container">
+  <div class="main-card-container d-flex flex-row justify-content-start;">
+      <a href="{% url 'adddoctor' %}">
+      <div class="main-card">
+        Total<br>Appointment
+          <p class="main-card-value">{{total}}</p>
+      </div>
+          </a>
+      <div class="main-card">
+        Pending<br>Appointment
+          <p class="main-card-value">{{pending}}</p>
+      </div>
+      <div class="main-card">
+        Completed<br>Appointment
+          <p class="main-card-value">{{completed}}</p>
+      </div>
+      <div class="main-card">
+        Billed<br>Appointment
+          <p class="main-card-value">{{completed}}</p>
+      </div>
+  </div>
+</div>
+<div class="table-container">
+    <h2>Appointments</h2>
+    <br>
+    {% for i in appointment %}
+<div class="card m-1">
+    <div class="card-body" style="background-color:#B7EAF5">
+        <h6>{{i.id }} - {{i.first_name }} {{i.last_name}} - {{i.date}}</h6>
+    </div>
+</div>
+    {% endfor %}
+</div>
+</body>
+</html>
