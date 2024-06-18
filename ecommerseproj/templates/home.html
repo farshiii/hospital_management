@@ -1,0 +1,213 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <style>
+    .text {
+      position:absolute;
+      top: 22%; /* Adjust top position */
+      padding-left: 40%; /* Adjust right position */
+      font-weight: bold;
+      font-family:'Trebuchet MS', sans-serif;
+      font-size: 52px;
+      text-align:center;
+    }
+    .green-text {
+      color: green;
+      font-size:72px;
+      font-family:'Allan', sans-serif;
+    }
+.bg {
+    width: 100%;
+}
+    .image{
+    padding-top:0%;
+    width:75%;
+    }
+    @media (max-width: 1440px) {
+      .text {
+        font-size: 3vw;
+        top: 18%;
+        right: 38%;
+
+      }
+      .green-text {
+        font-size: 5vw;
+      }
+      .t-cat{
+      font-size: 5vw;
+      justify-content:center;
+      }
+    }
+    .t1{
+      text-align:center;
+      color:green;
+      font-family:'Trebuchet MS', sans-serif;
+      width:40%;
+      margin-top:6%;
+      margin-left:30%;
+    }
+    .t-cat{
+    justify-content:center;
+    color:green;
+    font-style: italic;
+    padding-top:50px;
+    padding-bottom:50px;
+    padding-left:20px;
+    font-size:60px%;
+    margin-left:35%;
+    }
+    .pc{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:center;
+    }
+            .product-card {
+            background-color: #ffffff;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+        }
+            .product-card1 {
+            background-color: #ffffff;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+            }
+        .product-card1:hover {
+               box-shadow: 0 8px 16px rgba(0, 128, 0, 0.2);
+               transform: translateY(-5px);
+        }
+
+
+
+        .product-card:hover {
+               box-shadow: 0 8px 16px rgba(0, 128, 0, 0.2);
+               transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product-details {
+            margin-top: 10px;
+        }
+
+        .product-name {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .product-quantity {
+            color: #777;
+        }
+
+        .product-description {
+            margin-top: 8px;
+            color: #555;
+        }
+
+        .product-price {
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #333;
+            font-weight: bold;
+        }
+        .box_button{
+             display: flex;
+            flex-wrap: wrap;
+            justify-content:left;
+        }
+        #b1{
+        margin:10px;
+        background-color: #4CAF50;
+        border-radius:10%;
+        border: none;
+
+        }
+        #b2{
+        margin:10px;
+        background-color: #4CAF50;
+        border-radius:10%;
+        border: none;
+        }
+
+        #b2:hover {
+            background-color: #45a049;
+        }
+                #b1:hover {
+            background-color: #45a049;
+        }
+            a {
+        text-decoration: none;
+        color: black;
+    }
+    .change{
+
+
+    }
+  </style>
+<div>
+  <img src="{% static 'images/Firefly20240222212047.png' %}" class="bg">
+</div>
+<div class="text">
+    <span class="green-text">Freshness</span> <br>Delivered <br>to Your<br> Doorstep!
+</div>
+<div>
+  <h1 class="t1">“Quality is not an act,<br> it is a habit.”</h1>
+</div>
+<div>
+  <img src="{% static 'images/bg.png' %}" alt="Your Image" class="image">
+</div>
+<div>
+  <h1 class="t-cat">- SHOP BY CATEGORY -</h1>
+</div>
+<div class="pc">
+    {% for cate in cat %}
+    <div class="product-card1">
+        <a href="#">
+        <img class="product-image" src="{{cate.image.url}}" alt="Product Image">
+        <div class="product-details">
+            <div class="product-name">{{cate.name}}</div>
+            <div class="product-description">{{cate.desc}}</div>
+        </div>
+                </a>
+    </div>
+    {% endfor %}
+        <div>
+        <img class="change" src="{% static 'images/IMG_1721.JPG' %}">
+    </div>
+  </div>
+  <h1 class="t-cat">- ALL PRODUCTS -</h1>
+<div class="pc">
+    {% for prod in product %}
+    <div class="product-card">
+        <a href="{{prod.get_url}}"><img class="product-image" src="{{prod.image.url}}" alt="Product Image"></a>
+        <div class="product-details">
+            <div class="product-name">{{prod.name}}</div>
+            <div class="product-quantity">{{prod.stock}} unit Left</div>
+            <div class="product-description">Quantity: {{prod.desc}}</div>
+            <div class="product-price">{{prod.price}}</div>
+                <div class="box_button">
+                <center>
+                <a href="{% url 'product' %}"><button id="b1">BUY</button></a>
+               <a href="#"><button id="b2">CART</button></a>
+                </center>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}
+
+

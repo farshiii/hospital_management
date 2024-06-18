@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body{
+    background-color:#e4e4e4;
+    }
+    h1{
+    padding-bottom:5%;
+    font-size:300%;
+    }
+    .menu{
+    margin-left:30%;
+    margin-right:30%;
+    margin-top:2%;
+    padding-top:6%;
+    background-color:white;
+    border-radius:3%;
+    z-index: -1;
+    }
+    label{
+    margin-right:20px;
+    }
+    #images{
+    width:50%;
+    }
+    input{
+    margin-top:3%;
+    }
+    #password1{
+    margin-left:0.6%;
+    }
+    #but{
+    color:green;
+    border-radius:5px;
+    background-color:#e4e4e4;
+    }
+</style>
+<center>
+<div class="menu">
+<form action="/signin/" method="post">
+    {% csrf_token %}
+    <h1>SIGN IN</h1>
+    <label for=""> Username : </label>
+    <input type="text" id="username"  name="username" placeholder="Enter your Username" Required><br>
+        <label for=""> Password : </label>
+    <input type="password" id="password1"  name="password1" placeholder="Enter a Password" Required><br>
+    <br><button type="submit" id="but">Sign in</button><br><br>
+    <img src="{% static 'images/IMG_9870.JPG' %}" id="images"></img>
+</form>
+</div>
+    </center>
+{% endblock content %}
