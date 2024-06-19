@@ -243,15 +243,10 @@ form button:hover {
     </div>
     <div class="nav-nav-div">
         <a href="{% url 'appointment' %}">Appointment</a>
-        <a href="{% url 'dashboard' %}">Doctors</a>
-        <a>Contact Us</a>
         {% if user.is_authenticated %}
         <a href="{% url 'logout' %}">Logout</a>
         {% else %}
         <a href="{% url 'signup' %}">Login</a>
-        {% endif %}
-        {% if user.is_authenticated %}
-        <a style=" margin-left:30%; font-size:25px; font-weight:850;">Hello! {{fname}}</a>
         {% endif %}
     </div>
 </div>
